@@ -1,0 +1,28 @@
+Are you a skilled Python developer looking to make an impact in the dynamic world of data infrastructure? Do you thrive on creating efficient, reliable, and scalable solutions that power data-driven decision-making? If so, we have an exciting opportunity for you!
+
+
+About Us
+
+Our innovative solutions empower organizations to harness the potential of their data, enabling smarter insights and strategic growth. Backed by a successful series A extension, our company is on a mission to reshape how data insights are communicated. We are assembling a close-knit team of 10 developers and seeking a talented Python Developer to play a pivotal role in enhancing our capabilities.
+
+
+Role and Responsibilities
+
+As a Mid-Senior Python Developer at our company, you will play a pivotal role in crafting the backbone of our data infrastructure. Your expertise in Python, AWS, Docker, Terraform, APIs, and PyTorch will be essential in designing and implementing solutions that seamlessly integrate into our ecosystem. You'll collaborate closely with a team of fellow developers, sharing insights and ideas to drive the development of cutting-edge data solutions. Fast and reliable code output will be crucial as you contribute to the expansion and optimization of our infrastructure.
+
+
+What You'll Need
+
+Experience: You should have a proven track record as a Python developer, with a strong understanding of AWS, Docker, and Terraform.
+Tech Stack: Proficiency in working with APIs and PyTorch will be highly valuable in this role.
+Problem-Solving: Your ability to creatively solve complex technical challenges will set you apart.
+Team Player: Collaboration is key in our small team of developers, so effective communication and teamwork skills are a must.
+Drive: You're motivated to excel in a fast-paced environment where your code has a direct impact on our success.
+
+
+Perks and Benefits
+
+Competitive compensation package with performance-based bonuses.
+Opportunity for career growth and skill development in a rapidly expanding company.
+Hybrid work model, allowing you to work both in our vibrant New York City office and remotely.
+Engaging company culture that values innovation, diversity, and collaboration.

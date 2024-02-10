@@ -1,0 +1,193 @@
+{
+    "frameworks": [
+        "react", "react.js", "reactjs", "angular", "angular.js", "angularjs", 
+        "vue.js", "vuejs", "django", "next.js", "nextjs", "jquery",
+        "express.js", "expressjs", "flask", "laravel", "fastapi", "j2ee",
+        "asp.net", "symfony", "ember.js", "node.js", ".net", "bigquery",
+        "flutter", "ionic", "cakephp", "meteor", "grails", "threejs"
+    ],    
+    "languages": [
+        "python", "java", "javascript", "c++", "c#", "sql", "spark",
+        "c/c++", "html", "css", "ruby", "swift", "go", "golang",
+        "kotlin", "t-sql", "psql", "php", "r", "perl", "typescript", 
+        "scala", "pl/sql", "plsql", "rust", "haskell", "lua", "dart",
+        "objective-c", "f#"
+    ],    
+    "python_libraries": [
+        "pandas", "numpy", "asyncio", "matplotlib",
+        "seaborn", "express", "selenium", "requests", 
+        "bs4", "scikit-learn", "tensorflow", "keras",
+        "nltk", "pyspark"
+    ],
+    "apitype": [
+        "xml", "json", "api's", "apis","restapi", "restful", 
+        "soap", "graphql", "json-rpc", "xml-rpc", "websockets", "http", "rpc",
+        "microservices", "serverless", "openapi",
+        "swagger", "webhooks", "http/2"
+    ],    
+    "webtechnologies": [
+        "axios"
+    ],
+    "webservers": [
+        "apache", "nginx", "litespeed",
+        "tomcat", "jetty", "caddy", "cherokee", "haproxy",
+        "gunicorn", "puma", "unicorn"
+    ],
+    "databases": [
+        "mysql", "postgresql", "oracle", "mongodb",
+        "sqlite", "cassandra", "nosql",
+        "dynamodb", "mariadb", "neo4j", "elasticsearch",
+        "firebase", "couchdb", "db2", "olap", "oltp"
+    ],
+    "inmemorydb": [
+        "redis", "memcached", "hazelcast",
+        "couchbase", "aerospike",
+        "gridgain", "tarantool", "caching", "imdg"
+    ],
+    "cicd_tools": [
+        "jenkins", "circleci", "gitlab", "bamboo", "teamcity", "ansible", "terraform", 
+        "codeship", "drone", "gocd", "buddy", "buildkite", "spinnaker", 
+        "bitbucket", "semaphore", "appveyor", "codepipeline", "heroku"
+    ],
+    "containerization_tools": [
+        "docker", "podman", "rkt", "lxc", 
+        "openvz", "containerd", "cri-o",
+        "rancher", "mesos", "singularity",
+        "warden"
+    ],
+    "orchestration_tools": [
+        "kubernetes", "amazon ecs", "openshift", "nomad", "rancher","marathon", "airflow"
+    ],
+    "task_queues": ["celery", "kafka","rabbitmq", "mq"],
+    "cloud": ["aws", "azure", "gcp"],
+    "awsservices": [
+        "iam", "ec2", "ecs", "ecr", "eks", "elb", "asg", 
+        "s3", "rds", "dynamodb", "neptune", "documentdb",
+        "elasticache", "redshift", "glue", "opensearch", 
+        "cloudfront", "mq", "sns", "sqs", "cloudformation", "codepipeline"
+    ],
+    "ides": [
+        "eclipse", "pycharm", "xcode", "netbeans", "atom", 
+        "rstudio", "webstorm", "clion", "phpstorm", "rubymine",
+        "goland", "brackets"
+    ],
+    "os": [
+        "windows", "macos", "linux", "ubuntu", "fedora",
+        "debian", "centos", "freebsd",
+        "android", "ios", "unix", "solaris", 
+        "raspbian", "mint"
+    ],
+    "testing_frameworks" : [
+        "junit", "pytest", "pyunit", "testng", "rspec", "mocha",
+        "jest", "selenium", "cucumber", "nunit",
+        "cypress", "phpunit", "karma", "protractor",
+        "testcafe", "mockito", "mockserver",
+        "wiremock", "behave", "postman", "tdd", "swagger"
+    ],
+    "archtectures": [
+        "mvc", "mvp", "mvvm", "mvt", "microservices", "monolithic",
+        "event-driven", "layered", "serverless", "hexagonal",
+        "component-based", "service-oriented", "restful",
+        "soa", "pipeline", "event-sourcing", "cqrs"
+    ],
+    "design_patterns": [
+        "singleton", "factory", "observer", "adapter",
+        "decorator", "facade", "strategy", "proxy",
+        "builder", "command", "mediator", "iterator", "composite",
+        "visitor", "bridge", "flyweight", "interpreter"
+    ],
+    "system_designs": [
+        "scalability", "availability", "reliability", "multi-threading", 
+        "latency", "consistency", "partitioning", "resilient",
+        "caching", "sharding", "replication", "performance",
+        "databases", "networking", "security"
+    ],
+    "distributed_systems": [
+        "replication", "partitioning", "consistency",
+        "availability", "caching", "blockchain", "rpc"
+    ],
+    "keywords": [
+        "agile", "waterfall", "leadership", "communication", "problem-solving", "teamwork", "servers", "networks", "reporting",
+        "organizational", "adaptability", "detail-oriented", "splunk",  "supervision", "design", 
+        "code", "test", "deploy", "initiative", "creativity", "analytical", "jira", "sphinx",
+        "collaboration", "interpersonal", "presentation", "negotiation", "innovation", "workflow", "automation",
+        "multitasking", "decision-making", "prioritization", "networking", "mentoring", "documentation",
+        "goal-oriented", "resourceful", "results-driven", "self-motivated", "integration tests", "financial", "finance",
+        "unit tests", "client-focused", "monitoring", "testing", "logging", "auditing",  "it fundamentals"
+    ],
+    "states": [
+        "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", 
+        "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", 
+        "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", 
+        "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", 
+        "VT", "VA", "WA", "WV", "WI", "WY"
+    ],
+    "multiple_words": {
+        "frameworks": ["django rest framework", "fast api", "react js", "vue js", "angular js", "ruby on rails", "spring boot", "java spring", "asp.net core", "play framework"],
+        "apitype": ["microsoft iis", "rest protocols", "restful apis", "web api"],
+        "databases": ["microsoft sql server", "sql server", "ms sql"],
+        "inmemorydb": ["apache ignite"],
+        "cicd_tools": ["continuous delivery and continuous integration process", "travis ci", "github actions", "concourse ci", "azure devops"],
+        "orchestration_tools": [
+            "docker swarm", "apache mesos", "google kubernetes engine (gke)",
+            "azure kubernetes service (aks)", "ibm cloud kubernetes service",
+            "digitalocean kubernetes", "red hat openshift", "hashicorp nomad"
+        ],
+        "deployment": ["kube flow"],
+        "os": ["arch linux", "chrome os", "red hat"],
+        "testing_frameworks": ["robot framework"],
+        "archtectures": ["micro services"],
+        "design_patterns": [ "template method", "chain of responsibility"],
+        "system_designs": ["api design", "fault tolerance", "high availability", "load balancing"],
+        "distributed_systems": [ 
+            "fault tolerance", "cap theorem", "consensus algorithms", "leader election", 
+            "distributed databases", "eventual consistency", "load balancing", "distributed file systems",
+            "microservices architecture", "service discovery", "data sharding",
+            "message queues"
+        ],
+        "ides": [
+            "android studio","visual studio code", 
+            "intellij idea", "sublime text", "visual studio", 
+            "jupyter notebook", "qt creator", "code blocks"
+        ],
+        "datascience": [
+            "data cleaning", "data integration", "data modeling", "data privacy", "data encryption", 
+            "data streaming", "data protection", "data quality", "data retrieval", "data security",
+            "data analysis", "data compression", "data governance", "data lake", "data processing",
+            "data manipulation", "data mining", "data normalization", "data profiling", 
+            "data transformation", "data validation", "data visualization", "big data",
+            "data analytics", "data discovery", "data etl", "data lineage", "data management",
+            "data mapping", "data ownership", "data processing",
+            "data synchronization", "data tracking", "data virtualization", "metadata management",
+            "master data management", "structured data", "unstructured data", "data leakage",
+            "data loss", "data science" 
+        ],
+        "keywords": [
+            "data structures", "advanced algorithms", "machine learning", "artificial intelligence", "apache kafka", "design patterns",
+            "natural language processing", "object oriented analysis and design", "critical thinking", "system design",
+            "time management", "conflict resolution", "customer service", "project management", "distributed systems", 
+            "caching strategies", "deployment strategies", "performance optimization", "security", "authentication", "authorization",
+            "programming languages", "app dynamics", "data pipelines", "data platform", "code reviews"
+        ],
+        "degree": ["master's degree", "bachelor's degree or equivalent", "masters degree", "bachelor's degree", "masters", "bachelors"],
+        "certifications": [
+            "aws certification", "azure certification", "gcp certification"
+        ]
+    },
+    "exclusion_words": [
+        "their", "both", "could", "than", "world", "as", "did", "first", 
+        "whose", "these", "am", "day", "into", "of", "we", "arrival", "upon", 
+        "using", "he", "it", "might", "she", "and", "look", "what", "should", 
+        "about", "etc", "have", "way", "some", "no", "then", "will", "good", "or", 
+        "which", "by", "if", "e.g", "use", "give", "go", "shall", "get", "me", 
+        "those", "two", "but", "for", "are", "our", "a", "her", "him", "on", "do", 
+        "better", "may", "we're", "new", "back", "is", "see", "how", "there", "people", 
+        "this", "done", "example", "in", "most", "now", "work", "so", "from", "with", 
+        "the", "say", "after", "know", "like", "them", "they", "its", "one", "my", "over", 
+        "best", "at", "his", "up", "any", "time", "all", "to", "be", "because", "I", "such", 
+        "also", "want", "not", "come", "even", "who", "just", "when", "make", "your", "an", 
+        "has", "was", "think", "you", "take", "had", "only", "place", "us", "well", "out", 
+        "were", "that", "would", "year", "can", "other", "why", "where"
+    ],
+    "exclusion_syms": "!@#$%^&*()_+=-{}|[]:;<>?,./~`"
+}
