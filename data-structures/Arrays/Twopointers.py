@@ -1,6 +1,6 @@
 """
-Two pointer variants
---------------------
+Two pointer variants and usage
+------------------------------
 1. 2 pointers from opposite directions
 2. 2 pointers towards the same direction
 3. It is useful when arrays are sorted
@@ -71,6 +71,17 @@ def validPalindrome(s):
         left += 1
         right -= 1
     return True
+
+'''
+Dungeon Game
+Cherry Pickup
+Minimum Path Cost in a Grid
+Maximum Number of Points with Cost
+Minimum Cost Homecoming of a Robot in a Grid
+Paths in Matrix Whose Sum Is Divisible by K
+Check if There is a Path With Equal Number of 0's And 1's
+Minimum Cost of a Path With Special Roads
+'''
 
 
 if __name__ == '__main__':

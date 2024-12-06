@@ -2,11 +2,15 @@ package main
 
 import (
 	"fmt"
+
+	"example.com/others/practice"
 )
 
 func main() {
 	fmt.Println("main func() in others package")
-	IntegersAndStrings()
-	a, b, _, _ := Functions(10, 20)
-	fmt.Println(a, b)
+	practice.Datatypes()
+	practice.Functions()
+	practice.Arrays()
+	practice.Maps()
+	practice.Structures()
 }
