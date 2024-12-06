@@ -7,6 +7,15 @@
             "result": ""
         },
 */
+
+export const introduction = {
+    "introduction": [
+        "Hi, I’m Ram Chandra Bhavirisetty, a <b>software developer</b> with 4 years of experience building <blue>scalable backend systems</blue>, <blue>optimizing complex architectures</blue>, and <blue>delivering high-performance solutions</blue>. My expertise lies in Python, Javascript, java, Go, and AWS, with a strong focus on distributed systems and cloud-native applications.",
+        "In my recent roles, I’ve led key initiatives, such as <highlight>modernizing legacy platforms</highlight> with 200K+ lines of code migration, which improved performance by <b>40%</b>, and implementing advanced caching mechanisms that reduced response times by <b>50%</b>. I’ve also contributed to designing <highlight>highly concurrent APIs</highlight> and ensuring scalability under heavy loads.",
+        "I thrive in roles where I can solve <blue>technical challenges</blue>, <blue>improve system efficiency</blue>, and create impactful solutions for customers. <green>At AWS</green>, I’m excited to leverage my skills in <blue>scalable system design</blue> and <blue>cloud technologies</blue> to drive innovation and deliver exceptional results.",
+    ]
+}
+
 export const notes = {
     "customer obsession": [
         {

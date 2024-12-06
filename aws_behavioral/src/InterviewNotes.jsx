@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Search, ChevronRight, ChevronDown } from 'lucide-react';
-import { notes } from './notes';
-import { filler_phrases } from './notes';
+import { notes, filler_phrases, introduction } from './notes';
+import parse from 'html-react-parser';
 
 // const allCategories = {
 //     "personal": ["introduction"],
@@ -44,6 +44,39 @@ import { filler_phrases } from './notes';
 //     ]
 //   }
 
+  // Parsing function with custom components
+
+const ulStyle = 'w-full p-4 space-y-3';
+const liStyle = 'ml-4 list-disc';
+
+  const renderFormattedText = (text) => {
+  // Define tag mappings
+  const tagStyles = {
+    red: 'text-red-500',
+    blue: 'font-semibold text-blue-600',
+    green: 'font-semibold text-green-700',
+    highlight: 'bg-yellow-200',
+    bold: 'font-bold',
+    italic: 'italic',
+    imp: 'font-bold text-green-500',
+    impnote: 'bg-gray-200 p-1 rounded-lg before:content-["Note"] before:text-red-500 before:font-bold'
+  };
+
+  // Replace custom tags with styled spans
+  let processedText = text;
+  
+  Object.entries(tagStyles).forEach(([tag, className]) => {
+    const regex = new RegExp(`<${tag}>(.*?)<\\/${tag}>`, 'g');
+    processedText = processedText.replace(
+      regex, 
+      `<span class="${className}">$1</span>`
+    );
+  });
+
+  return parse(processedText);
+};
+
+  
 const InterviewNotes = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedCategories, setExpandedCategories] = useState([]);
@@ -75,7 +108,7 @@ const InterviewNotes = () => {
   
   const filteredNotes = useMemo(() => {
     return searchTerm ? filterNotes() : notes;
-  }, [searchTerm, notes]);
+  }, [searchTerm]);
 
   const categoryProps = {
     expandedCategories:expandedCategories,
@@ -83,25 +116,32 @@ const InterviewNotes = () => {
   }
 
   return (
-    <div className='flex flex-row items-start justify-center w-full h-full p-10'>
-        <div className='w-[75%] h-full'>
-            <div className="relative w-full max-w-4xl p-4 mx-auto bg-white border border-green-300 rounded-lg shadow-lg">
+    <div className='flex flex-row items-start justify-center w-full h-full p-10 mobile:p-0 mobile:text-sm tablet:text-xl laptop:text-2xl tablet:bg-red-400'>
+        <div className='w-full h-full'>
+            <header className='fixed top-0 left-0 right-0 z-10 h-10 bg-gray-100'>
+              <div className='flex items-center justify-start w-full h-full px-4 space-x-4 mobile:px-2'>
+                <a href="#introduction">Introduction</a>
+                <a href="#phrases">Phrases</a>
+                <a href="#lps">Leaderships</a>
+              </div>
+            </header>
+            <div className="relative w-full max-w-4xl p-4 mx-auto mt-10 bg-white border border-green-300 rounded-lg shadow-lg mobile:p-2 mobile:w-full">
                 {/* Introduction button */}
-                <Title title="self introduction" />
+                <Title id="introduction" title="self introduction" />
                 <div className="mb-4 border rounded-lg">
                     <CategoryButton category="introduction" {...categoryProps} />
                     {expandedCategories.includes("introduction") && <IntroductionBlock />}
                 </div>
 
                 {/* Filler phrases button */}
-                <Title title="Important filler phrases" />
+                <Title id="phrases" title="Important filler phrases" />
                 <div className="mb-4 border rounded-lg">
                     <CategoryButton category="fillers" {...categoryProps} />
                     {expandedCategories.includes("fillers") && <ImportantFillerPhrases />}
                 </div>
                 
                 {/* Search Bar */}
-                <div className="sticky top-0 mb-4">
+                <div className="sticky mt-1 mb-4 top-10">
                     <Search className="absolute left-3 top-2.5 text-gray-400 h-5 w-5" />
                     <input
                     type="text"
@@ -113,8 +153,8 @@ const InterviewNotes = () => {
                 </div>
                 
                 {/* Total question count */}
-                <Title title="leadership principles" />
-                <span className='py-2'>Total Questions: {Object.values(filteredNotes).reduce((count, questions) => count + questions.length, 0)}</span>
+                <Title id="lps" title="leadership principles" />
+                <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Questions: {Object.values(filteredNotes).reduce((count, questions) => count + questions.length, 0)}</span>
 
                 {/* Leadership principle questions */}
                 <div className="space-y-4">
@@ -133,48 +173,28 @@ const InterviewNotes = () => {
   );
 };
 
-
 const IntroductionBlock = () => {
   return (
-    <div>
-      p
-    </div>
+    <ul className={ulStyle}>
+      {introduction.introduction.map((point,idx) => (
+        <li key={idx} className={liStyle}>{renderFormattedText(point)}</li>
+      ))}
+    </ul>
   )
 }
 
 const ImportantFillerPhrases = () => {
-  const Separator = () => <p className='text-gray-900'><hr></hr></p>
+  const Separator = () => <p className='w-full border border-gray-200'></p>
   return (
-    <ul className='w-full p-4 space-y-3'>
+    <ul className={ulStyle}>
       {filler_phrases.map((phrase, idx) => (
-        phrase.includes("#break") ? <Separator /> : <li className='ml-4 list-disc' key={idx}><span>{phrase}</span></li>
+        phrase.includes("#break") ? <Separator key={idx} /> : <li className={liStyle} key={idx}><span>{phrase}</span></li>
       ))}
     </ul>
-    // Object.keys(filler_phrases).map((category) => (
-    //   <div key={category}>
-    //     <h2>{category.replace(/_/g, " ")}</h2>
-    //     <ul>
-    //       {Array.isArray(filler_phrases[category])
-    //         ? filler_phrases[category].map((phrase, index) => (
-    //             <li key={index}>{phrase}</li>
-    //           ))
-    //         : Object.keys(filler_phrases[category]).map((subCategory) => (
-    //             <div key={subCategory}>
-    //               <h3>{subCategory.replace(/_/g, " ")}</h3>
-    //               <ul>
-    //                 {filler_phrases[category][subCategory].map((phrase, index) => (
-    //                   <li key={index}>{phrase}</li>
-    //                 ))}
-    //               </ul>
-    //             </div>
-    //           ))}
-    //     </ul>
-    //   </div>
-    // ))
   )
 }
 
-const Title = ({title}) => <p className='text-lg font-light text-gray-400 capitalize'>{title}</p>
+const Title = ({id,title}) => <p id={id} className='text-lg font-light text-gray-400 capitalize tablet:text-lg laptop:text-2xl'>{title}</p>
 
 const DisplayItems = ({items}) => {
     return (
