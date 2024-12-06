@@ -3,46 +3,46 @@ import { Search, ChevronRight, ChevronDown } from 'lucide-react';
 import { notes } from './notes';
 import { filler_phrases } from './notes';
 
-const allCategories = {
-    "personal": ["introduction"],
-    "principles": [
-        "customer obsession",
-        "deliver results",
-        "dive deep",
-        "earn trust",
-        "are right, a lot",
-        "bias for action",
-        "have backbone disagree and commit",
-        "insist on the highest standards",
-        "invent and simplify",
-        "learn and be curious",
-        "think big",
-        "ownership",
-        "leadership"
-    ],
-    "situation": [
-        "conflicts resolution",
-        "teamwork collaboration",
-        "problem solving",
-        "decision making",
-        "performance and recognition",
-        "learning and development",
-        "adapatability",
-        "handling work pressure",
-        "innovative",
-        "client and stakeholder",
-        "ethical challenges",
-        "technical challenges",
-        "feedback and growth",
-        "communication",
-        "mistakes",
-        "failure",
-        "proud moments"
-      ],
-    "miscelleneous": [
+// const allCategories = {
+//     "personal": ["introduction"],
+//     "principles": [
+//         "customer obsession",
+//         "deliver results",
+//         "dive deep",
+//         "earn trust",
+//         "are right, a lot",
+//         "bias for action",
+//         "have backbone disagree and commit",
+//         "insist on the highest standards",
+//         "invent and simplify",
+//         "learn and be curious",
+//         "think big",
+//         "ownership",
+//         "leadership"
+//     ],
+//     "situation": [
+//         "conflicts resolution",
+//         "teamwork collaboration",
+//         "problem solving",
+//         "decision making",
+//         "performance and recognition",
+//         "learning and development",
+//         "adapatability",
+//         "handling work pressure",
+//         "innovative",
+//         "client and stakeholder",
+//         "ethical challenges",
+//         "technical challenges",
+//         "feedback and growth",
+//         "communication",
+//         "mistakes",
+//         "failure",
+//         "proud moments"
+//       ],
+//     "miscelleneous": [
         
-    ]
-  }
+//     ]
+//   }
 
 const InterviewNotes = () => {
   const [searchTerm, setSearchTerm] = useState('');

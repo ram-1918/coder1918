@@ -723,15 +723,11 @@ export const notes = {
     "teamwork collaboration": [],
     "problem solving": [],
     "decision making": [],
-    "learning and development": [],
     "adapatability": [],
     "handling work pressure": [],
-    "technical challenges": [],
-    "feedback and growth": [],
     "mistakes": [],
     "failure": [],
     "proud moments": [],
-
   };
 
 
@@ -767,93 +763,93 @@ export const filler_phrases = [
     "The final implementation ensures correctness and efficiency."
 ]
 
-export const filler_phrases1 = {
-        "need_time_to_think": [
-            "That's a great question. Let me take a moment to organize my thoughts.",
-            "Let me think this through step by step.",
-            "I'll break this down into smaller parts to ensure I address everything.",
-            "Give me a second to structure my response.",
-            "I want to make sure I provide the best answer. Let me take a moment."
-        ],
-        "clarify_question": [
-            "Could you clarify what you mean by [specific term]?",
-            "Just to confirm, you're asking about [specific aspect], correct?",
-            "Do you mean in the context of [example]?",
-            "Are you looking for a technical solution or a high-level approach here?",
-            "Can you elaborate on the constraints or assumptions for this problem?"
-        ],
-        "explaining_approach": [
-            "To start off, let me outline my thought process.",
-            "First, I'll identify the problem, then I'll walk through the potential solutions.",
-            "At a high level, here's how I would approach this.",
-            "Let me explain this in steps for clarity.",
-            "Here's how I would tackle this, starting with [specific step].",
-            "I'll iterate through the solution to ensure all edge cases are covered."
-        ],
-        "when_stuck_or_unsure": [
-            "That's an interesting challenge. Let me explore a couple of options here.",
-            "I see a few ways to approach this; let me evaluate which makes the most sense.",
-            "I might need a bit more time to optimize this, but here's a starting point.",
-            "Can I ask a quick question to make sure I\u2019m on the right track?",
-            "If I may, I'd like to make some assumptions to move forward."
-        ],
-        "reassuring_thought_process": [
-            "I\u2019ll start with a brute-force approach, and then optimize it as we go.",
-            "I want to ensure the solution is both scalable and efficient.",
-            "I'll check for edge cases as I write this solution.",
-            "I'll test this with a few inputs to validate the logic.",
-            "Let\u2019s discuss trade-offs before finalizing this approach."
-        ],
-        "behavioral_questions": {
-            "setting_context": [
-                "To give you some background...",
-                "This was during my time at [company] where I worked on [specific project].",
-                "The situation involved [brief description of context]."
-            ],
-            "explaining_actions": [
-                "My primary responsibility in this situation was...",
-                "To address this, I decided to...",
-                "The first thing I did was..."
-            ],
-            "describing_outcomes": [
-                "As a result, we achieved...",
-                "This led to...",
-                "The impact was measurable, as seen by..."
-            ]
-        },
-        "wrapping_up": [
-            "To summarize, the main points are...",
-            "In essence, the solution boils down to...",
-            "The key takeaway here is...",
-            "Let me know if you\u2019d like me to dive deeper into any part of this."
-        ],
-        "engaging_interviewer": [
-            "Does this approach align with what you're looking for?",
-            "Would you like me to expand on any specific part of this solution?",
-            "Do you have any feedback on my thought process so far?",
-            "Is there anything else you'd like me to consider here?"
-        ],
-        "time_management": [
-            "Let me write out the function signature first.",
-            "I'll pseudocode this before jumping into implementation.",
-            "I\u2019ll focus on the core logic first and handle edge cases afterward.",
-            "Here\u2019s the algorithm at a high level; now, I\u2019ll start coding it.",
-            "Let me quickly walk you through what I\u2019ve written so far."
-        ],
-        "optimization": [
-            "Let\u2019s analyze the time and space complexity to identify inefficiencies.",
-            "I see room for optimization here by using [specific method].",
-            "If we use [data structure/algorithm], we can improve performance.",
-            "I\u2019ll reevaluate the logic to ensure it's scalable.",
-            "We can make this more efficient by reducing redundant operations."
-        ],
-        "summarizing_or_reviewing": [
-            "To recap, here\u2019s what I\u2019ve done so far...",
-            "At this stage, the solution addresses the key requirements.",
-            "Here\u2019s what I\u2019d do next if given more time.",
-            "The final implementation ensures correctness and efficiency."
-        ]
-    }
+// export const filler_phrases1 = {
+//         "need_time_to_think": [
+//             "That's a great question. Let me take a moment to organize my thoughts.",
+//             "Let me think this through step by step.",
+//             "I'll break this down into smaller parts to ensure I address everything.",
+//             "Give me a second to structure my response.",
+//             "I want to make sure I provide the best answer. Let me take a moment."
+//         ],
+//         "clarify_question": [
+//             "Could you clarify what you mean by [specific term]?",
+//             "Just to confirm, you're asking about [specific aspect], correct?",
+//             "Do you mean in the context of [example]?",
+//             "Are you looking for a technical solution or a high-level approach here?",
+//             "Can you elaborate on the constraints or assumptions for this problem?"
+//         ],
+//         "explaining_approach": [
+//             "To start off, let me outline my thought process.",
+//             "First, I'll identify the problem, then I'll walk through the potential solutions.",
+//             "At a high level, here's how I would approach this.",
+//             "Let me explain this in steps for clarity.",
+//             "Here's how I would tackle this, starting with [specific step].",
+//             "I'll iterate through the solution to ensure all edge cases are covered."
+//         ],
+//         "when_stuck_or_unsure": [
+//             "That's an interesting challenge. Let me explore a couple of options here.",
+//             "I see a few ways to approach this; let me evaluate which makes the most sense.",
+//             "I might need a bit more time to optimize this, but here's a starting point.",
+//             "Can I ask a quick question to make sure I\u2019m on the right track?",
+//             "If I may, I'd like to make some assumptions to move forward."
+//         ],
+//         "reassuring_thought_process": [
+//             "I\u2019ll start with a brute-force approach, and then optimize it as we go.",
+//             "I want to ensure the solution is both scalable and efficient.",
+//             "I'll check for edge cases as I write this solution.",
+//             "I'll test this with a few inputs to validate the logic.",
+//             "Let\u2019s discuss trade-offs before finalizing this approach."
+//         ],
+//         "behavioral_questions": {
+//             "setting_context": [
+//                 "To give you some background...",
+//                 "This was during my time at [company] where I worked on [specific project].",
+//                 "The situation involved [brief description of context]."
+//             ],
+//             "explaining_actions": [
+//                 "My primary responsibility in this situation was...",
+//                 "To address this, I decided to...",
+//                 "The first thing I did was..."
+//             ],
+//             "describing_outcomes": [
+//                 "As a result, we achieved...",
+//                 "This led to...",
+//                 "The impact was measurable, as seen by..."
+//             ]
+//         },
+//         "wrapping_up": [
+//             "To summarize, the main points are...",
+//             "In essence, the solution boils down to...",
+//             "The key takeaway here is...",
+//             "Let me know if you\u2019d like me to dive deeper into any part of this."
+//         ],
+//         "engaging_interviewer": [
+//             "Does this approach align with what you're looking for?",
+//             "Would you like me to expand on any specific part of this solution?",
+//             "Do you have any feedback on my thought process so far?",
+//             "Is there anything else you'd like me to consider here?"
+//         ],
+//         "time_management": [
+//             "Let me write out the function signature first.",
+//             "I'll pseudocode this before jumping into implementation.",
+//             "I\u2019ll focus on the core logic first and handle edge cases afterward.",
+//             "Here\u2019s the algorithm at a high level; now, I\u2019ll start coding it.",
+//             "Let me quickly walk you through what I\u2019ve written so far."
+//         ],
+//         "optimization": [
+//             "Let\u2019s analyze the time and space complexity to identify inefficiencies.",
+//             "I see room for optimization here by using [specific method].",
+//             "If we use [data structure/algorithm], we can improve performance.",
+//             "I\u2019ll reevaluate the logic to ensure it's scalable.",
+//             "We can make this more efficient by reducing redundant operations."
+//         ],
+//         "summarizing_or_reviewing": [
+//             "To recap, here\u2019s what I\u2019ve done so far...",
+//             "At this stage, the solution addresses the key requirements.",
+//             "Here\u2019s what I\u2019d do next if given more time.",
+//             "The final implementation ensures correctness and efficiency."
+//         ]
+//     }
 
 
 //   export const sample_notes = {
