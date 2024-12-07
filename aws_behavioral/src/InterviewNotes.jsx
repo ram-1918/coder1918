@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Search, ChevronRight, ChevronDown } from 'lucide-react';
 import { notes, filler_phrases, introduction } from './notes';
+import { systemdesign } from './system_design';
 import parse from 'html-react-parser';
 
 // const allCategories = {
@@ -49,7 +50,8 @@ import parse from 'html-react-parser';
 const ulStyle = 'w-full p-4 space-y-3';
 const liStyle = 'ml-4 list-disc';
 
-  const renderFormattedText = (text) => {
+// Formatting block
+const renderFormattedText = (text) => {
   // Define tag mappings
   const tagStyles = {
     red: 'text-red-500',
@@ -76,27 +78,61 @@ const liStyle = 'ml-4 list-disc';
   return parse(processedText);
 };
 
-  
+// Main Block 
 const InterviewNotes = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTermLP, setSearchTermLP] = useState('');
+  const [searchTermSD, setSearchTermSD] = useState('');
   const [expandedCategories, setExpandedCategories] = useState([]);
 
-  const filterNotes = () => {
+
+  // Search with + included for more accurate results
+  const filterNotes = (searchTerm) => {
     if (!searchTerm) return notes;
+
+    const filtered = {};
+    const categoriesToExpand = [];
+    
+    const searchTerms = searchTerm.toLowerCase().split('+').map(term => term.trim());
+
+    Object.entries(notes).forEach(([category, items]) => {
+      const filteredItems = items.filter(item => 
+        searchTerms.every(term =>
+          Object.values(item).some(value =>
+            typeof value === 'string' && value.toLowerCase().includes(term)
+          )
+        )
+      );
+
+      if (filteredItems.length > 0) {
+        filtered[category] = filteredItems;
+        categoriesToExpand.push(category);
+      }
+    });
+
+    setExpandedCategories(categoriesToExpand);
+
+    return filtered;
+  };
+
+  const filterNotesSD = () => {
+    if (!searchTermSD) return systemdesign;
   
     const filtered = {};
     const categoriesToExpand = [];
+    
+    // Split the search term by '+' to handle multiple terms (if needed)
+    const searchTerms = searchTermSD.toLowerCase().split('+').map(term => term.trim());
   
-    Object.entries(notes).forEach(([category, items]) => {
-      const filteredItems = items.filter(item => 
-        Object.values(item).some(value => 
-          typeof value === 'string' && 
-          value.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+    Object.entries(systemdesign).forEach(([category, subcategory]) => {
+      // Check if all search terms are found in any of the subcategory's string values
+      const isMatch = searchTerms.every(term =>
+        Object.values(subcategory).some(value =>
+          typeof value === 'string' && value.toLowerCase().includes(term)
+        ) || category.includes(searchTermSD)
       );
-      
-      if (filteredItems.length > 0) {
-        filtered[category] = filteredItems;
+  
+      if (isMatch) {
+        filtered[category] = subcategory; // Include the matching category
         categoriesToExpand.push(category);
       }
     });
@@ -106,9 +142,39 @@ const InterviewNotes = () => {
     return filtered;
   };
   
-  const filteredNotes = useMemo(() => {
-    return searchTerm ? filterNotes() : notes;
-  }, [searchTerm]);
+  // const filterNotes = () => {
+  //   if (!searchTerm) return notes;
+  
+  //   const filtered = {};
+  //   const categoriesToExpand = [];
+  
+  //   Object.entries(notes).forEach(([category, items]) => {
+  //     const filteredItems = items.filter(item => 
+  //       Object.values(item).some(value => 
+  //         typeof value === 'string' && 
+  //         value.toLowerCase().includes(searchTerm.toLowerCase())
+  //       )
+  //     );
+      
+  //     if (filteredItems.length > 0) {
+  //       filtered[category] = filteredItems;
+  //       categoriesToExpand.push(category);
+  //     }
+  //   });
+  
+  //   setExpandedCategories(categoriesToExpand);
+  
+  //   return filtered;
+  // };
+  
+
+  const filteredNotesLP = useMemo(() => {
+    return searchTermLP ? filterNotes(searchTermLP) : notes;
+  }, [searchTermLP]);
+
+  const filteredNotesSD = useMemo(() => {
+    return searchTermSD ? filterNotesSD(searchTermSD) : systemdesign;
+  }, [searchTermSD]);
 
   const categoryProps = {
     expandedCategories:expandedCategories,
@@ -123,6 +189,7 @@ const InterviewNotes = () => {
                 <a href="#introduction">Introduction</a>
                 <a href="#phrases">Phrases</a>
                 <a href="#lps">Leaderships</a>
+                <a href="#systemdesign">System Design</a>
               </div>
             </header>
             <div className="relative w-full max-w-4xl p-4 mx-auto mt-10 bg-white border border-green-300 rounded-lg shadow-lg mobile:p-2 mobile:w-full">
@@ -139,30 +206,42 @@ const InterviewNotes = () => {
                     <CategoryButton category="fillers" {...categoryProps} />
                     {expandedCategories.includes("fillers") && <ImportantFillerPhrases />}
                 </div>
-                
+
+                {/* Leaderships */}
                 {/* Search Bar */}
-                <div className="sticky mt-1 mb-4 top-10">
-                    <Search className="absolute left-3 top-2.5 text-gray-400 h-5 w-5" />
-                    <input
-                    type="text"
-                    placeholder="Search LPs..."
-                    className="w-full py-2 pl-10 pr-4 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-200"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
+                <SearchBar term={searchTermLP} setFunc={setSearchTermLP} placeholder="Search LPs..." />
                 
                 {/* Total question count */}
                 <Title id="lps" title="leadership principles" />
-                <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Questions: {Object.values(filteredNotes).reduce((count, questions) => count + questions.length, 0)}</span>
+                <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Questions: {Object.values(filteredNotesLP).reduce((count, questions) => count + questions.length, 0)}</span>
+
+                {/* Leadership principle questions */}
+                <div className="mb-10 space-y-4">
+                    {
+                    Object.entries(filteredNotesLP).map(([category, items]) => (
+                        <div key={category} className="border rounded-lg">
+                            <CategoryButton category={category} items={items} {...categoryProps} />
+                            {expandedCategories.includes(category) && <DisplayItems items={items} />}
+                        </div>
+                    ))
+                    }
+                </div>
+                
+                {/* System design */}
+                {/* Search Bar */}
+                <SearchBar term={searchTermSD} setFunc={setSearchTermSD} placeholder="Search system design..." />
+                
+                {/* Total question count */}
+                <Title id="lps" title="System Design Concepts" />
+                <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Concepts: {Object.keys(filteredNotesSD).length}</span>
 
                 {/* Leadership principle questions */}
                 <div className="space-y-4">
                     {
-                    Object.entries(filteredNotes).map(([category, items]) => (
+                    Object.entries(filteredNotesSD).map(([category, item]) => (
                         <div key={category} className="border rounded-lg">
-                            <CategoryButton category={category} items={items} {...categoryProps} />
-                            {expandedCategories.includes(category) && <DisplayItems items={items} />}
+                            <CategoryButton category={category} {...categoryProps} />
+                            {expandedCategories.includes(category) && <SingleItemSD item={item} />}
                         </div>
                     ))
                     }
@@ -173,6 +252,7 @@ const InterviewNotes = () => {
   );
 };
 
+// Blocks
 const IntroductionBlock = () => {
   return (
     <ul className={ulStyle}>
@@ -194,8 +274,53 @@ const ImportantFillerPhrases = () => {
   )
 }
 
+const SystemDesignBlock = () => {
+  return (
+    <div></div>
+  )
+}
+
+// Helpers
 const Title = ({id,title}) => <p id={id} className='text-lg font-light text-gray-400 capitalize tablet:text-lg laptop:text-2xl'>{title}</p>
 
+const CategoryButton = ({category, items=[], expandedCategories, setExpandedCategories}) => {
+  const toggleCategory = (category) => {
+      setExpandedCategories(prev => 
+        prev.includes(category) 
+          ? prev.filter(c => c !== category)
+          : [...prev, category]
+      );
+    };
+  return (
+      <button
+      className="flex items-center justify-between w-full px-4 py-2 rounded-t-lg bg-gray-50 hover:bg-gray-100"
+      onClick={() => toggleCategory(category)}
+      >
+          <span className="font-medium capitalize">{category} {items.length !== 0 && (<>({items.length})</>)}</span>
+          {expandedCategories.includes(category) ? 
+              <ChevronDown className="w-5 h-5" /> : 
+              <ChevronRight className="w-5 h-5" />
+          }
+      </button>
+  )
+}
+
+const SearchBar = ({term, setFunc, placeholder}) => {
+  return (
+    <div className="sticky mt-1 mb-4 top-10">
+      <Search className="absolute left-3 top-2.5 text-gray-400 h-5 w-5" />
+      <input
+      type="text"
+      placeholder={placeholder}
+      className="w-full py-2 pl-10 pr-4 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-200"
+      value={term}
+      onChange={(e) => setFunc(e.target.value)}
+      />
+  </div>
+  )
+}
+
+// SRP Components
 const DisplayItems = ({items}) => {
     return (
         <div className="p-4 space-y-4">
@@ -204,28 +329,6 @@ const DisplayItems = ({items}) => {
             ))}
             {items.length === 0 && "No items yet"}
         </div>
-    )
-}
-
-const CategoryButton = ({category, items=[], expandedCategories, setExpandedCategories}) => {
-    const toggleCategory = (category) => {
-        setExpandedCategories(prev => 
-          prev.includes(category) 
-            ? prev.filter(c => c !== category)
-            : [...prev, category]
-        );
-      };
-    return (
-        <button
-        className="flex items-center justify-between w-full px-4 py-2 rounded-t-lg bg-gray-50 hover:bg-gray-100"
-        onClick={() => toggleCategory(category)}
-        >
-            <span className="font-medium capitalize">{category} {items.length !== 0 && (<>({items.length})</>)}</span>
-            {expandedCategories.includes(category) ? 
-                <ChevronDown className="w-5 h-5" /> : 
-                <ChevronRight className="w-5 h-5" />
-            }
-        </button>
     )
 }
 
@@ -239,27 +342,61 @@ const SingleItem = ({item}) => {
         </div>
         <div>
             <span className="font-medium text-blue-600">Situation: </span>
-            {item.situation}
+            {renderFormattedText(item.situation)}
         </div>
         <div>
             <span className="font-medium text-blue-600">Task: </span>
-            {item.task}
+            {renderFormattedText(item.task)}
         </div>
         <div>
             <span className="font-medium text-blue-600">Action: </span>
             {/* <pre className="font-sans whitespace-pre-wrap">{item.action}</pre> */}
-            {item.action}
+            {renderFormattedText(item.action)}
         </div>
         <div>
             <span className="font-medium text-blue-600">Result: </span>
-            {item.result}
+            {renderFormattedText(item.result)}
         </div>
         {item.edge_case && <div>
             <span className="font-medium text-blue-600">Edge Case: </span>
-            {item.edge_case}
+            {renderFormattedText(item.edge_case)}
         </div>}
         </div>
     </div>
     )
+}
+
+const SingleItemSD = ({item}) => {
+  return (
+      <div className="p-4 rounded-lg bg-gray-50">
+      <div className="grid grid-cols-1 gap-2">
+      <div>
+          <span className="font-medium text-blue-600">Definition: </span>
+          {renderFormattedText(item["definition"])}
+      </div>
+      <div>
+          <span className="font-medium text-blue-600">when to use: </span>
+          {renderFormattedText(item["when to use"])}
+      </div>
+      <div>
+          <span className="font-medium text-blue-600">Why is it needed: </span>
+          {/* <pre className="font-sans whitespace-pre-wrap">{item.action}</pre> */}
+          {renderFormattedText(item["Why is it needed"])}
+      </div>
+      <div>
+          <span className="font-medium text-blue-600">How does it improve the system: </span>
+          {renderFormattedText(item["How does it improve the system"])}
+      </div>
+      <div>
+          <span className="font-medium text-blue-600">what are the challenges to implement </span>
+          {renderFormattedText(item["what are the challenges to implement"])}
+      </div>
+      <div>
+          <span className="font-medium text-blue-600">Sample use case: </span>
+          {renderFormattedText(item["Sample use case"])}
+      </div>
+      </div>
+  </div>
+  )
 }
 export default InterviewNotes;

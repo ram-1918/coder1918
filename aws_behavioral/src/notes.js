@@ -8,6 +8,17 @@
         },
 */
 
+export const systemdesign = {
+    "scalability": {
+        "definition":"",
+        "when to use": "",
+        "Why is it needed": "",
+        "How does it improve the system": "",
+        "what are the challenges to implemement": "",
+        "Sample use case": ""
+    }
+}
+
 export const introduction = {
     "introduction": [
         "Hi, I’m Ram Chandra Bhavirisetty, a <b>software developer</b> with 4 years of experience building <blue>scalable backend systems</blue>, <blue>optimizing complex architectures</blue>, and <blue>delivering high-performance solutions</blue>. My expertise lies in Python, Javascript, java, Go, and AWS, with a strong focus on distributed systems and cloud-native applications.",
@@ -28,7 +39,7 @@ export const notes = {
         },
         {
             question: "Describe a situation where you had to balance competing customer needs against technical constraints.",
-            situation: "At Goldman Sachs, different teams required uninterrupted services during the migration from Python 2.7 to 3.10.",
+            situation: "At Goldman Sachs, different teams required uninterrupted services during the migration of a tool, secdb, from Python 2.7 to 3.10.",
             task: "Manage dependencies and ensure zero disruption to trading operations while upgrading legacy code.",
             action: "Collaborated across teams to identify critical dependencies and implemented the Circuit Breaker and Feature Toggle Patterns for fallback and phased rollouts.",
             result: "Delivered a seamless migration for over 200K lines of code with 99.9% parity, maintaining customer trust.",
@@ -43,7 +54,7 @@ export const notes = {
         },
         {
             question: "Tell me about a time when you had to make a decision between what a customer wanted and what you believed was the right technical solution.",
-            situation: "At Eidiko System Integrators, customers requested more database calls for real-time updates, which could degrade performance.",
+            situation: "At Eidiko System Integrators, customers requested for a real-time updates without degrading the system performance, which could possibly require more database calls.",
             task: "Balance real-time needs with system performance constraints.",
             action: "Implemented the Cache-Aside Pattern with Redis to optimize data retrieval without frequent database hits.",
             result: "Achieved a 50% reduction in query times while meeting the customer's requirements for performance."
@@ -64,8 +75,8 @@ export const notes = {
         },
         {
             "question": "Give me an example of when you were able to anticipate a customer need with a solution/product they didn't know they needed/wanted yet. How did you know they needed this? How did they respond?",
-            "situation": "At Cloudserv.ai, while analyzing API usage patterns, I noticed frequent complaints about latency, even though no explicit feature request had been made.",
-            "task": "Address this underlying issue before it became a formal customer demand.",
+            "situation": "At Cloudserv.ai, while analyzing API usage patterns, I noticed frequent complaints about latency.",
+            "task": "I wanted to address this underlying issue before it became <red>a formal customer demand</red>.",
             "action": "I proactively optimized API performance by leveraging Go’s concurrency model and introducing Redis for caching. This reduced response times and allowed the system to handle twice the concurrent traffic.",
             "result": "Customers experienced a smoother and faster service without having to request changes. Positive feedback followed, with several stakeholders highlighting the improved performance during reviews."
         }
@@ -73,43 +84,43 @@ export const notes = {
     "deliver results": [
         {
             "question": "Describe a time when you delivered a project under tight deadlines.",
-            "situation": "At Goldman Sachs, we were tasked with migrating the SecDB platform from Python 2.7 to 3.10 within a strict deadline to ensure compliance with financial regulations.",
-            "task": "Complete the migration while maintaining system stability and performance.",
+            "situation": "At Goldman Sachs, I was tasked with migrating a specifc part of SecDB platform from Python 2.7 to 3.10 within a strict deadline to ensure compliance with financial regulations.",
+            "task": "I decided to complete the migration while maintaining system stability and performance.",
             "action": "I led the migration process by creating a detailed project plan, breaking it into manageable tasks, and prioritizing key components. I ensured close coordination with cross-functional teams to avoid delays.",
             "result": "The migration was successfully completed on time with minimal disruptions, maintaining a 99.9% parity between the old and new systems."
         },
         {
             "question": "Tell me about a situation where you overcame obstacles to deliver results.",
             "situation": "At Eidiko, I worked on developing a high-performance API under tight deadlines, but we faced unexpected issues with third-party service integration.",
-            "task": "Deliver the API while resolving the integration issues.",
-            "action": "I collaborated with the third-party provider to troubleshoot and find a workaround. Meanwhile, I optimized the API’s caching mechanism to improve performance under load.",
+            "task": "I decided to deliver the API while resolving the integration issues.",
+            "action": "I collaborated with the third-party provider to troubleshoot and find a method to overcome the problem. Meanwhile, I optimized the API’s caching mechanism to improve performance under the heavy load.",
             "result": "The API was delivered on time, and its performance exceeded expectations, handling peak loads efficiently."
         },
         {
             "question": "Share an experience where you had to prioritize multiple competing demands.",
             "situation": "At Cloudserv.ai, I was managing the migration of a critical internal system while also handling performance optimizations for another project.",
-            "task": "Prioritize tasks to meet both project needs.",
+            "task": "I decided to prioritize tasks to meet both project needs.",
             "action": "I assessed the urgency and impact of each task, delegating less critical tasks to junior developers and focusing on high-priority activities myself. I also implemented parallel workflows to speed up the process.",
             "result": "Both projects were successfully delivered on time, with performance improvements achieved on the optimized system."
         },
         {
             "question": "Tell me about a time when you helped turn around a failing project.",
-            "situation": "At TCS, a document processing system was falling behind due to inefficiencies in the caching strategy.",
-            "task": "Turn the project around by improving performance.",
-            "action": "I implemented a new caching strategy using Redis, reducing the load on the database. Additionally, I worked with the team to fix other system bottlenecks.",
+            "situation": "At TCS, when the document processing project has come to an end, it was falling behind due to inefficiencies in the caching strategy.",
+            "task": "Our team has decided to turn the project around by improving performance.",
+            "action": "I implemented a new caching strategy using Redis, reducing the load on the database. Additionally, I worked with the team to fix other system bottlenecks which can improve performance.",
             "result": "The project’s performance improved by 65%, and the system was able to handle the required document throughput."
         },
         {
             "question": "Describe how you've measured and communicated project success.",
-            "situation": "At Goldman Sachs, I worked on modernizing a platform with a focus on improving query performance.",
-            "task": "Track and measure the success of the performance improvements.",
-            "action": "I set up monitoring tools to track key performance metrics like query response times and system uptime. I provided regular reports to stakeholders highlighting the improvements.",
-            "result": "Query response times improved by 40%, and the success was communicated clearly to stakeholders, resulting in continued trust in the project."
+            "situation": "At Goldman Sachs, during the migration of secDB platform, I was also focused on improving query performance.",
+            "task": "I wanted to track and measure the success of the performance improvements.",
+            "action": "For that, I set up monitoring tools to track key performance metrics like <bold>query response times</bold> and <bold>system uptime</bold>. I provided <red>regular reports</red> to stakeholders highlighting the improvements.",
+            "result": "Query response times improved by 40%, and the success was communicated clearly to stakeholders<highlight>(by showcasing quantifiable results, explaining the value to them, and being transparent on the challenges faced and how we overcame them)</highlight>, resulting in continued trust in the project."
         },
         {
             "question": "Give me an example of a time when you were able to deliver an important project under a tight deadline. What sacrifices did you have to make to meet the deadline? How did they impact the final deliverable? What was the final outcome?",
             "situation": "At Goldman Sachs, during the Python migration project, we faced a compliance deadline that required delivering a critical update in under two weeks.",
-            "task": "I prioritized the most essential features, postponing non-critical enhancements, and focused on ensuring stability and parity.",
+            "task": "I prioritized the most essential features, postponing non-critical enhancements, and focused on ensuring stability and parity(<blue>parity</blue> refers to methods of error detection by checking whether the data transmitted or stored has maintained its integrity.).",
             "action": "I worked extended hours, automated key testing workflows to save time, and collaborated closely with team members to accelerate progress.",
             "result": "The project was delivered on time with 99.9% parity, meeting all compliance requirements. While some enhancements were delayed, the primary objectives were achieved without compromising quality."
         },
