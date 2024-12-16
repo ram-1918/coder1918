@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Search, ChevronRight, ChevronDown } from 'lucide-react';
 import { notes, filler_phrases, introduction } from './notes';
 import { systemdesign } from './system_design';
@@ -83,7 +83,7 @@ const InterviewNotes = () => {
   const [searchTermLP, setSearchTermLP] = useState('');
   const [searchTermSD, setSearchTermSD] = useState('');
   const [expandedCategories, setExpandedCategories] = useState([]);
-
+  const [shortNotes, setShortNotes] = useState(localStorage.getItem('shortn', null) !== null ? localStorage.getItem('shortn') : '');
 
   // Search with + included for more accurate results
   const filterNotes = (searchTerm) => {
@@ -142,39 +142,18 @@ const InterviewNotes = () => {
     return filtered;
   };
   
-  // const filterNotes = () => {
-  //   if (!searchTerm) return notes;
-  
-  //   const filtered = {};
-  //   const categoriesToExpand = [];
-  
-  //   Object.entries(notes).forEach(([category, items]) => {
-  //     const filteredItems = items.filter(item => 
-  //       Object.values(item).some(value => 
-  //         typeof value === 'string' && 
-  //         value.toLowerCase().includes(searchTerm.toLowerCase())
-  //       )
-  //     );
-      
-  //     if (filteredItems.length > 0) {
-  //       filtered[category] = filteredItems;
-  //       categoriesToExpand.push(category);
-  //     }
-  //   });
-  
-  //   setExpandedCategories(categoriesToExpand);
-  
-  //   return filtered;
-  // };
-  
-
-  const filteredNotesLP = useMemo(() => {
+  const save_to_local = e => {
+    setShortNotes(e.target.value);
+    localStorage.setItem('shortn', e.target.value);
+  }
+  const filteredNotesLP = useCallback(() => {
     return searchTermLP ? filterNotes(searchTermLP) : notes;
   }, [searchTermLP]);
 
-  const filteredNotesSD = useMemo(() => {
+  const filteredNotesSD = useCallback(() => {
     return searchTermSD ? filterNotesSD(searchTermSD) : systemdesign;
   }, [searchTermSD]);
+  
 
   const categoryProps = {
     expandedCategories:expandedCategories,
@@ -183,7 +162,9 @@ const InterviewNotes = () => {
 
   return (
     <div className='flex flex-row items-start justify-center w-full h-full p-10 mobile:p-0 mobile:text-sm tablet:text-xl laptop:text-2xl tablet:bg-red-400'>
+        {/* Main Panel */}
         <div className='w-full h-full'>
+            {/* Header with topics overview */}
             <header className='fixed top-0 left-0 right-0 z-10 h-10 bg-gray-100'>
               <div className='flex items-center justify-start w-full h-full px-4 space-x-4 mobile:px-2'>
                 <a href="#introduction">Introduction</a>
@@ -192,60 +173,75 @@ const InterviewNotes = () => {
                 <a href="#systemdesign">System Design</a>
               </div>
             </header>
-            <div className="relative w-full max-w-4xl p-4 mx-auto mt-10 bg-white border border-green-300 rounded-lg shadow-lg mobile:p-2 mobile:w-full">
-                {/* Introduction button */}
-                <Title id="introduction" title="self introduction" />
-                <div className="mb-4 border rounded-lg">
-                    <CategoryButton category="introduction" {...categoryProps} />
-                    {expandedCategories.includes("introduction") && <IntroductionBlock />}
-                </div>
+            <div className='flex flex-row w-full h-full'>
+              {/* Content Panel */}
+              <div className="relative w-[75%] max-w-4xl p-4 mx-auto mt-10 bg-white border border-green-300 rounded-lg shadow-lg mobile:p-2 mobile:w-full">
+                  {/* Introduction button */}
+                  <Title id="introduction" title="self introduction" />
+                  <div className="mb-4 border rounded-lg">
+                      <CategoryButton category="introduction" {...categoryProps} />
+                      {expandedCategories.includes("introduction") && <IntroductionBlock />}
+                  </div>
 
-                {/* Filler phrases button */}
-                <Title id="phrases" title="Important filler phrases" />
-                <div className="mb-4 border rounded-lg">
-                    <CategoryButton category="fillers" {...categoryProps} />
-                    {expandedCategories.includes("fillers") && <ImportantFillerPhrases />}
-                </div>
+                  {/* Filler phrases button */}
+                  <Title id="phrases" title="Important filler phrases" />
+                  <div className="mb-4 border rounded-lg">
+                      <CategoryButton category="fillers" {...categoryProps} />
+                      {expandedCategories.includes("fillers") && <ImportantFillerPhrases />}
+                  </div>
 
-                {/* Leaderships */}
-                {/* Search Bar */}
-                <SearchBar term={searchTermLP} setFunc={setSearchTermLP} placeholder="Search LPs..." />
-                
-                {/* Total question count */}
-                <Title id="lps" title="leadership principles" />
-                <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Questions: {Object.values(filteredNotesLP).reduce((count, questions) => count + questions.length, 0)}</span>
+                  {/* Leaderships */}
+                  {/* Search Bar */}
+                  <SearchBar term={searchTermLP} setFunc={setSearchTermLP} placeholder="Search LPs..." />
+                  
+                  {/* Total question count */}
+                  <Title id="lps" title="leadership principles" />
+                  <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Questions: {Object.values(filteredNotesLP).reduce((count, questions) => count + questions.length, 0)}</span>
 
-                {/* Leadership principle questions */}
-                <div className="mb-10 space-y-4">
-                    {
-                    Object.entries(filteredNotesLP).map(([category, items]) => (
-                        <div key={category} className="border rounded-lg">
-                            <CategoryButton category={category} items={items} {...categoryProps} />
-                            {expandedCategories.includes(category) && <DisplayItems items={items} />}
-                        </div>
-                    ))
-                    }
-                </div>
-                
-                {/* System design */}
-                {/* Search Bar */}
-                <SearchBar term={searchTermSD} setFunc={setSearchTermSD} placeholder="Search system design..." />
-                
-                {/* Total question count */}
-                <Title id="lps" title="System Design Concepts" />
-                <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Concepts: {Object.keys(filteredNotesSD).length}</span>
+                  {/* Leadership principle questions */}
+                  <div className="mb-10 space-y-4">
+                      {
+                      Object.entries(filteredNotesLP).map(([category, items]) => (
+                          <div key={category} className="border rounded-lg">
+                              <CategoryButton category={category} items={items} {...categoryProps} />
+                              {expandedCategories.includes(category) && <DisplayItems items={items} />}
+                          </div>
+                      ))
+                      }
+                  </div>
+                  
+                  {/* System design */}
+                  {/* Search Bar */}
+                  <SearchBar term={searchTermSD} setFunc={setSearchTermSD} placeholder="Search system design..." />
+                  
+                  {/* Total question count */}
+                  <Title id="lps" title="System Design Concepts" />
+                  <span className='py-2 text-gray-300 tablet:text-md laptop:text-lg'>Total Concepts: {Object.keys(filteredNotesSD).length}</span>
 
-                {/* Leadership principle questions */}
-                <div className="space-y-4">
-                    {
-                    Object.entries(filteredNotesSD).map(([category, item]) => (
-                        <div key={category} className="border rounded-lg">
-                            <CategoryButton category={category} {...categoryProps} />
-                            {expandedCategories.includes(category) && <SingleItemSD item={item} />}
-                        </div>
-                    ))
-                    }
+                  {/* Leadership principle questions */}
+                  <div className="space-y-4">
+                      {
+                      Object.entries(filteredNotesSD).map(([category, item]) => (
+                          <div key={category} className="border rounded-lg">
+                              <CategoryButton category={category} {...categoryProps} />
+                              {expandedCategories.includes(category) && <SingleItemSD item={item} />}
+                          </div>
+                      ))
+                      }
+                  </div>
+              </div>
+              {/* Short Notes */}
+              <div className='w-[25%]  h-full mx-5 my-10 shadow-lg border rounded-lg'>
+                <div className='fixed w-[25%] h-[50%] border border-gray-200 shadow-lg flex flex-col font-mono text-sm outline-none top-20'>
+                  <span className='p-2 bg-gray-100'>Notes</span>
+                  <textarea 
+                  placeholder='Write short notes here...'
+                  onChange={e => save_to_local(e)}
+                  value={shortNotes} 
+                  className='w-full h-full min-h-[90%] p-2 outline-none' >
+                  </textarea>
                 </div>
+              </div>
             </div>
         </div>
     </div>
@@ -274,13 +270,14 @@ const ImportantFillerPhrases = () => {
   )
 }
 
-const SystemDesignBlock = () => {
-  return (
-    <div></div>
-  )
-}
+// const SystemDesignBlock = () => {
+//   return (
+//     <div></div>
+//   )
+// }
 
 // Helpers
+
 const Title = ({id,title}) => <p id={id} className='text-lg font-light text-gray-400 capitalize tablet:text-lg laptop:text-2xl'>{title}</p>
 
 const CategoryButton = ({category, items=[], expandedCategories, setExpandedCategories}) => {
