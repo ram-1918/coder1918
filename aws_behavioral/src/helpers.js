@@ -53,3 +53,10 @@ export const handle_header_item = (
         console.log('Raise error message!');
 }
 };
+
+export const handleMouseMove = (event, setFunc) => {
+    setFunc({
+      x: event.clientX + 10,
+      y: event.clientY + 10,
+    });
+  };

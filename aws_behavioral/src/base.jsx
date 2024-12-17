@@ -14,7 +14,7 @@ export const ToolTip = ({ text, position }) => {
       whiteSpace: 'nowrap',
       zIndex: 1000,
     }}
-    className="absolute invisible bg-gray-300 top-1 group-hover/item:visible"
+    className="absolute invisible bg-gray-300 top-1 group-hover/item:visible group-hover/edit:invisible"
     >
       {text}
     </div>
